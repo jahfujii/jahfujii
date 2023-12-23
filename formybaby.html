@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Invitation</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 10px;
+        }
+        #image-container {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>wanna go on a date?</h2>
+
+    <button onclick="handleResponse('yes')">YES</button>
+    <button onclick="handleResponse('no')">NO</button>
+
+    <div id="image-container">
+        <!-- Placeholder for images -->
+        <img src="" alt="Date Image" id="dateImage">
+        <!-- Background music -->
+        <audio controls loop id="backgroundMusic">
+            <source src="Kinikilig.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <script>
+        var noCount = 0;
+
+        function handleResponse(response) {
+            if (response === 'yes') {
+                document.getElementById('image-container').style.display = 'block';
+                document.getElementById('dateImage').src = '5ac947e1f52bab2737cf1ef6d4445158.jpg'; // Change to your image file
+            } else if (response === 'no') {
+                noCount++;
+
+                // Check if it's within the range 1-5
+                if (noCount >= 1 && noCount <= 5) {
+                    document.getElementById('dateImage').src = '4f4846a052e881262b021f166c92d1a0.jpg'; // Change to your image file
+                }
+
+                // After 5 presses, reset the count
+                if (noCount >= 5) {
+                    noCount = 0;
+                }
+
+                // Add a new "NO" button for repetition
+                var noButton = document.createElement('button');
+                noButton.innerHTML = 'NO';
+                noButton.onclick = function() {
+                    handleResponse('no');
+                };
+                document.body.appendChild(noButton);
+            }
+        }
+    </script>
+</body>
+  </html>
+  
